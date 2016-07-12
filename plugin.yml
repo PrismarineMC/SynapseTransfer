@@ -1,16 +1,16 @@
-name: FastTransfer
-version: 1.0.3
+name: SynapseTransfer
+version: 1.0.0
 api: 1.13.0
-main: shoghicp\FastTransfer\FastTransfer
+main: MrGenga\SynapseTransfer\SynapseTransfer
 load: STARTUP
-author: shoghicp
-website: "https://github.com/shoghicp/FastTransfer"
-description: "Transfer vanilla Minecraft: PE clients to another server"
+author: MrGenga
+website: "https://github.com/MrGenga/SynapseTransfer"
+description: "Transfer Minecraft: PE clients connected by Synapse to another server"
 commands:
  transfer:
-  permission: fasttransfer.command.transfer
-  usage: "/transfer [player] <address> <port>"
+  permission: synapsetransfer.command.transfer
+  usage: "/transfer [player] <server>"
 permissions:
- fasttransfer.command.transfer:
+ synapsetransfer.command.transfer:
   description: "Allows to transfer players to another server"
   default: op

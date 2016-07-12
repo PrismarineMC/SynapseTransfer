@@ -1,8 +1,8 @@
 <?php
 
 /*
- * FastTransfer plugin for PocketMine-MP
- * Copyright (C) 2015 Shoghi Cervantes <https://github.com/shoghicp/FastTransfer>
+ * SynapseTransfer plugin for Genisys
+ * Copyright (C) 2016 Raul Vakhitov <https://github.com/MrGenga/SynapseTransfer>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -15,7 +15,7 @@
  * GNU General Public License for more details.
  */
 
-namespace shoghicp\FastTransfer;
+namespace MrGenga\SynapseTransfer;
 
 use pocketmine\event\Cancellable;
 use pocketmine\event\player\PlayerEvent;
@@ -25,52 +25,34 @@ class PlayerTransferEvent extends PlayerEvent implements Cancellable{
 	public static $handlerList = null;
 
 	/** @var string */
-	private $address;
-	/** @var int */
-	private $port;
+	private $serverName;
 
 	/** @var string */
 	private $message;
 
 	/**
 	 * @param Player $player
-	 * @param string $address
-	 * @param int    $port
+	 * @param string $server
 	 * @param string $message
 	 */
-	public function __construct(Player $player, $address, $port = 19132, $message = ""){
+	public function __construct(Player $player, $server, $message = ""){
 		$this->player = $player;
-		$this->address = $address;
-		$this->port = (int) $port;
+		$this->serverName = $server;
 		$this->message = $message;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getPort(){
-		return $this->port;
 	}
 
 	/**
 	 * @return string
 	 */
-	public function getAddress(){
-		return $this->address;
+	public function getServerName(){
+		return $this->serverName;
 	}
 
 	/**
-	 * @param int $port
+	 * @param string $server
 	 */
-	public function setPort($port){
-		$this->port = (int) $port;
-	}
-
-	/**
-	 * @param string $address
-	 */
-	public function setAddress($address){
-		$this->address = $address;
+	public function setServerName($server){
+		$this->serverName = $server;
 	}
 
 	public function getMessage(){

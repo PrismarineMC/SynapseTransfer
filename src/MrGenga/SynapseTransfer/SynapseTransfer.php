@@ -23,6 +23,7 @@ use pocketmine\event\TranslationContainer;
 use pocketmine\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\TextFormat;
+use pocketmine\utils\Config;
 
 use synapse\Player as SynapsePlayer;
 
@@ -114,6 +115,9 @@ class SynapseTransfer extends PluginBase{
 		if($ev->isCancelled()){
 			return false;
 		}
+        $message = $ev->getMessage();
+        $server = $ev->getServerName();
+        $player = $ev->getPlayer();
 		
 		if($message !== null and $message !== ""){
 			$player->sendMessage($message);	
@@ -125,13 +129,14 @@ class SynapseTransfer extends PluginBase{
 			return false;
 		}
 		if(($hash = $this->getClientHashByDescription($des)) != null){
-			if($des == $sender->getServer()->getSynapse()->getDescription()){
+			if($des == $player->getServer()->getSynapse()->getDescription()){
 				$this->getLogger()->warn(TextFormat::RED . "Cannot transfer to the current server");
 				return false;
 			}
 			$player->transfer($hash);
 		}else{
 			$this->getLogger()->warn(TextFormat::RED . "$server is not a SynapseClient");
+            return false;
 		}
 
 		return true;
@@ -166,13 +171,13 @@ class SynapseTransfer extends PluginBase{
 				$sender->sendMessage(TextFormat::RED . "Undefined SynapseClient $server");
 				return true;
 			}
-			if($target instanseof SynapsePlayer && ($hash = $this->getClientHashByDescription($des)) != null){
+			if($target instanceof SynapsePlayer && ($hash = $this->getClientHashByDescription($des)) != null){
 				if($des == $sender->getServer()->getSynapse()->getDescription()){
 					$sender->sendMessage(TextFormat::RED . "Cannot transfer to the current server");
 					return true;
 			    }
 			}else{
-				$sender->sendMessage(TextFormat::RED . $target->getName() + " is not a SynapsePlayer or $server is not a SynapseClient");
+				$sender->sendMessage(TextFormat::RED . $target->getName() . " is not a SynapsePlayer or $server is not a SynapseClient");
                 return true;
 			}
 
