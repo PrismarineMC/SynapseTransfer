@@ -1,10 +1,10 @@
 name: SynapseTransfer
 version: 1.0.0
-api: 1.13.0
-main: MrGenga\SynapseTransfer\SynapseTransfer
+api: 1.0.0
+main: tk.mrgenga.synapsetransfer.SynapseTransfer
 load: STARTUP
 author: MrGenga
-website: "https://github.com/MrGenga/SynapseTransfer"
+website: "https://github.com/MrGenga/SynapseTransfer/tree/java"
 description: "Transfer Minecraft: PE clients connected by Synapse to another server"
 commands:
  transfer:
