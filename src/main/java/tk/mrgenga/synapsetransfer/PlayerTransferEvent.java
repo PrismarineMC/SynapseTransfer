@@ -20,7 +20,7 @@ import cn.nukkit.event.HandlerList;
 import cn.nukkit.event.player.PlayerEvent;
 import cn.nukkit.Player;
 
-public class PlayerTransferEvent extends PlayerEvent implements Cancellable{
+public class PlayerTransferEvent extends PlayerEvent implements Cancellable {
     private static final HandlerList handlers = new HandlerList(); 
 
     public static HandlerList getHandlers() { 
@@ -31,31 +31,31 @@ public class PlayerTransferEvent extends PlayerEvent implements Cancellable{
 
     private String message;
 
-    public PlayerTransferEvent(Player player, String server){
+    public PlayerTransferEvent(Player player, String server) {
         this.player = player;
         this.server = server;
         this.message = "";
     }
 
-    public PlayerTransferEvent(Player player, String server, String message){
+    public PlayerTransferEvent(Player player, String server, String message) {
         this.player = player;
         this.server = server;
         this.message = message;
     }
 
-    public String getServerName(){
+    public String getServerName() {
         return this.serverName;
     }
 
-    public void setServerName(String serverName){
+    public void setServerName(String serverName) {
         this.serverName = serverName;
     }
 
-    public String getMessage(){
+    public String getMessage() {
         return this.message;
     }
 
-    public void setMessage(String message){
+    public void setMessage(String message) {
         this.message = message;
     }
 
